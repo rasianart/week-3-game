@@ -116,8 +116,12 @@ var hangman = {
 			document.getElementById("l2").innerHTML = "";
 			document.getElementById("l4").innerHTML = "10";
 			this.wletter.length = 0;
+			$('#l52').click(function(){
+			$(this).fadeOut('slow');
+			});
 			this.chooseword();
 			this.spaces();
+			
 		}
 		var fword = this.uArray.join('');
 		if(this.word == fword) {
@@ -128,8 +132,12 @@ var hangman = {
 			document.getElementById("l2").innerHTML = "";
 			document.getElementById("l4").innerHTML = "10";
 			this.wletter.length = 0;
+			$('#l5').click(function(){
+			$(this).fadeOut('slow');
+			});
 			this.chooseword();
 			this.spaces();
+			
 		}
 	}
 };
