@@ -3,7 +3,13 @@ var hangman = {
 	vids: ["https://s3.amazonaws.com/distill-videos/videos/processed/34/OneMinuteHD.mp4.mp4", 
 			"https://s3.amazonaws.com/distill-videos/videos/processed/256/HeadRoomTheGreenhouses-HD_1.mp4.mp4",
 			"https://s3.amazonaws.com/distill-videos/videos/processed/2/manufacturing-video.mp4.mp4",
-			"https://s3.amazonaws.com/distill-videos/videos/processed/2180/lighthouse.mp4"],
+			"https://s3.amazonaws.com/distill-videos/videos/processed/2180/lighthouse.mp4",
+			"https://s3.amazonaws.com/distill-videos/videos/processed/1907/boston_skyline.mp4",
+			"https://s3.amazonaws.com/distill-videos/videos/processed/1637/flow_in_the_sky.mp4",
+			"https://s3.amazonaws.com/distill-videos/videos/processed/1385/clouds_over_the_mountain_hd_stock_video.mp4.mp4",
+			"https://s3.amazonaws.com/distill-videos/videos/processed/803/citylifestyle.mp4.mp4",
+			"https://s3.amazonaws.com/distill-videos/videos/processed/921/342574553.mp4.mp4",
+			"https://s3.amazonaws.com/distill-videos/videos/processed/9/3M2A4297.mp4.mp4"],
 	poems: [" - My father had run off with an cocktail waitress who had the nose of a macaw and breasts the size of aborted mice, but she was thin. That's all that **** cared about.",
 			" - Mother drank. I used to hate how she would walk my five year old self down to the liquor store",
 			" - The orange stickiness would melt down and drip off my fingers while I walked slowly behind her and the brown bag she gripped to, filled with beer.",
@@ -55,35 +61,22 @@ var hangman = {
 			}
 		}
 	},
-	// replace multiple letters
-	// checkindex2: function() {
-	// 	// console.log(this.word.split(""));
-	// 	// console.log(this.letter);
-	// 	var spl = hangman.word.split("").map(function(itm, ii){ return itm === hangman.letter ? hangman.letter + " " : "_ " });
-	// 	console.log(spl);
-	// 	var jword2 = spl.join(" ");
-	// 	document.getElementById("l1b").innerHTML =	jword2;
-	// },
 	// changes video 
 	changevid: function() {
 		var vidchoice;
-		var rand2 = Math.floor(Math.random() * 4);
-		console.log(rand2);
+		var rand2 = Math.floor(Math.random() * 10);
 		vidchoice = this.vids[rand2];
-		console.log(vidchoice);
 		// document.querySelector("#vid").src = vidchoice;
-		$('#vcontain').fadeOut('slow', function(){
+		$('#vcontain').fadeTo(1000, 0, function(){
 			document.querySelector("#vid").src = vidchoice;
 		});
-		$('#vcontain').fadeIn('slow');
+		$('#vcontain').fadeTo(1000, 1);
 	},
 	// chooses a random poem
 	changepoem: function() {
 		var poemchoice;
 		var rand2 = Math.floor(Math.random() * 9);
-		console.log(rand2);
 		poemchoice = this.poems[rand2];
-		console.log(poemchoice);
 		this.curpoem = poemchoice;
 	},
 	// if wrong letter chose, print it to html and decrease score counter
@@ -93,7 +86,6 @@ var hangman = {
 				hangman.guessNum--;
 				this.changepoem();
 				this.wletter.push(this.letter);
-				console.log(this.wletter);
 				var div = document.getElementById("l2");
 				var down = document.createElement("div");
 				down.setAttribute('id', 'down');
@@ -112,7 +104,6 @@ var hangman = {
 	// check if duplicate correct letters are guessed. 
 	noduplicate2: function() {
 		var y = $.inArray(this.letter, this.uArray);
-		console.log(y);
 		return y;
 	},
 	// when game is over, alert player if won or lost, reset game
@@ -156,10 +147,19 @@ document.onkeyup = function letterpress(event) {
 	document.getElementById("l5").style.display = 'none';
 	document.getElementById("l52").style.display = 'none';
 	hangman.checkindex();
-	// hangman.checkindex2();
 	hangman.wrongletter();
 	hangman.gameover();
 };
 });
+
+	// replace multiple letters
+	// checkindex2: function() {
+	// 	// console.log(this.word.split(""));
+	// 	// console.log(this.letter);
+	// 	var spl = hangman.word.split("").map(function(itm, ii){ return itm === hangman.letter ? hangman.letter + " " : "_ " });
+	// 	console.log(spl);
+	// 	var jword2 = spl.join(" ");
+	// 	document.getElementById("l1b").innerHTML =	jword2;
+	// },
 
 
